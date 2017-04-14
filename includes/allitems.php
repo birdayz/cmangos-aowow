@@ -131,8 +131,8 @@ function b_type($type, $value) {
  * @return type 
  */
 function req_spell($spell_id) {
-    global $aDB;
-    return $aDB->selectCell('SELECT spellname_loc' . $_SESSION['locale'] . ' FROM ?_aowow_spell WHERE spellID=?d LIMIT 1', $spell_id);
+    global $DB;
+    return $DB->selectCell('SELECT spellname_loc' . $_SESSION['locale'] . ' FROM ?_aowow_spell WHERE spellID=?d LIMIT 1', $spell_id);
 }
 
 /**
