@@ -165,12 +165,12 @@ if (!$spell = load_cache(13, intval($id))) {
                                 $spell['effect'][$i]['object']['entry'] = $row['effect' . $j . 'MiscValue'];
                                 $spell['effect'][$i]['object']['name'] = $DB->selectCell("SELECT name FROM ?_gameobject_template WHERE entry=? LIMIT 1", $spell['effect'][$i]['object']['entry']) . ' (' . $spell['effect'][$i]['object']['entry'] . ')';
                                 break;
-                            }
+                            
                         // скиллы
-                        case 118: // "Require Skill" {
+                        case 118: // "Require Skill" 
                                 $spell['effect'][$i]['name'] .= ' (' . $DB->selectCell('SELECT name FROM ?_aowow_skill WHERE skillID=? LIMIT 1', $row['effect' . $j . 'MiscValue']) . ')';
                                 break;
-                            }
+                            
                         // ауры
                         case 6: {
                                 break;
@@ -180,13 +180,13 @@ if (!$spell = load_cache(13, intval($id))) {
                         case 87: // "Summon Totem (slot 1)"
                         case 88: // "Summon Totem (slot 2)"
                         case 89: // "Summon Totem (slot 3)"
-                        case 90: // "Summon Totem (slot 4)" {
+                        case 90: // "Summon Totem (slot 4)" 
                                 $spell['effect'][$i]['name'] .= ' (<a href="?npc=' . $row['effect' . $j . 'MiscValue'] . '">' . $row['effect' . $j . 'MiscValue'] . '</a>)';
                                 break;
-                            }
-                        default: {
+                            
+                        default: 
                                 $spell['effect'][$i]['name'] .= ' (' . $row['effect' . $j . 'MiscValue'] . ')';
-                            }
+                            
                     }
                 }
                 // Если просто урон школой - добавляем подпись школы
@@ -205,15 +205,15 @@ if (!$spell = load_cache(13, intval($id))) {
                 if ($row['effect' . $j . 'Aura'] > 0 && IsSet($spell_aura_names[$row['effect' . $j . 'Aura']]))
                     switch ($row['effect' . $j . 'Aura']) {
                         case 78: // "Mounted" - приписываем ссылку на нпс
-                        case 56: // "Transform" {
+                        case 56: // "Transform" 
                                 $spell['effect'][$i]['name'] .= ': ' . $spell_aura_names[$row['effect' . $j . 'Aura']] . ' (<a href="?npc=' . $row['effect' . $j . 'MiscValue'] . '">' . $row['effect' . $j . 'MiscValue'] . '</a>)';
                                 break;
-                            }
-                        default: {
+                            
+                        default: 
                                 $spell['effect'][$i]['name'] .= ': ' . $spell_aura_names[$row['effect' . $j . 'Aura']];
                                 if ($row['effect' . $j . 'MiscValue'] > 0)
                                     $spell['effect'][$i]['name'] .= ' (' . $row['effect' . $j . 'MiscValue'] . ')';
-                            }
+                            
                     }
                 elseif ($row['effect' . $j . 'Aura'] > 0)
                     $spell['effect'][$i]['name'] .= ': Unknown_Aura(' . $row['effect' . $j . 'Aura'] . ')';
