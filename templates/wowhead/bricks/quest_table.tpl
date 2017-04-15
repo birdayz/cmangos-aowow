@@ -17,7 +17,7 @@
 					{if isset($data[i].itemrewards)}
 						,itemrewards:[
 							{section name=j loop=$data[i].itemrewards}
-								[{$data[i].itemrewards[j].entry},{$data[i].itemrewards[j].count}]
+								[{$data[i].itemrewards[j][0].entry},{$data[i].itemrewards[j].count}]
 								{if $smarty.section.j.last}{else},{/if}
 							{/section}
 						]
@@ -25,7 +25,7 @@
 					{if isset($data[i].itemchoices)}
 						,itemchoices:[
 							{section name=j loop=$data[i].itemchoices}
-								[{$data[i].itemchoices[j].entry},{$data[i].itemchoices[j].count}]
+								[{$data[i].itemchoices[j][0].entry},{$data[i].itemchoices[j].count}]
 								{if $smarty.section.j.last}{else},{/if}
 							{/section}
 						]

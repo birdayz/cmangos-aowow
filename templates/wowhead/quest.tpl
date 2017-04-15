@@ -331,9 +331,9 @@
 {section name=j loop=$quest.itemchoices}
 								<th id="icontab-icon{$smarty.section.j.index+1}"></th>
 								<td>
-									<span class="q{$quest.itemchoices[j].quality}">
-										<a href="?item={$quest.itemchoices[j].entry}">
-											{$quest.itemchoices[j].name}
+									<span class="q{$quest.itemchoices[j][0].quality}">
+										<a href="?item={$quest.itemchoices[j][0].entry}">
+											{$quest.itemchoices[j][0].name}
 										</a>
 									</span>
 								</td>
@@ -342,7 +342,7 @@
 						</table>
 						<script type="text/javascript">
 						{section name=j loop=$quest.itemchoices}
-							ge('icontab-icon{$smarty.section.j.index+1}').appendChild(g_items.createIcon({$quest.itemchoices[j].entry}, 1, {$quest.itemchoices[j].count}));
+							ge('icontab-icon{$smarty.section.j.index+1}').appendChild(g_items.createIcon({$quest.itemchoices[j][0].entry}, 1, {$quest.itemchoices[j].count}));
 						{/section}
 						</script>
 {/if}
@@ -355,9 +355,9 @@
 {section name=j loop=$quest.itemrewards}
 								<th id="icontab-icon{$smarty.section.j.index+1}"></th>
 								<td>
-									<span class="q{$quest.itemrewards[j].quality}">
-										<a href="?item={$quest.itemrewards[j].entry}">
-											{$quest.itemrewards[j].name}
+									<span class="q{$quest.itemrewards[j][0].quality}">
+										<a href="?item={$quest.itemrewards[j][0].entry}">
+											{$quest.itemrewards[j][0].name}
 										</a>
 									</span>
 								</td>
@@ -366,7 +366,7 @@
 						</table>
 						<script type="text/javascript">
 						{section name=j loop=$quest.itemrewards}
-							ge('icontab-icon{$smarty.section.j.index+1}').appendChild(g_items.createIcon({$quest.itemrewards[j].entry}, 1, {$quest.itemrewards[j].count}));
+							ge('icontab-icon{$smarty.section.j.index+1}').appendChild(g_items.createIcon({$quest.itemrewards[j][0].entry}, 1, {$quest.itemrewards[j].count}));
 						{/section}
 						</script>
 {/if}
@@ -384,7 +384,6 @@
 							ge('icontab-icon20').appendChild(g_spells.createIcon({$quest.spellreward.entry}, 1, 0));
 						</script>
 {/if}
-
 {if isset($quest.moneycopper) or isset($quest.moneysilver) or isset($quest.moneygold)}
 						{strip}
 						{#You_will_also_receive#}:
