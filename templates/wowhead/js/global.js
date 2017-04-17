@@ -3040,6 +3040,9 @@ Listview.extraCols = {
         value: "stock",
         compute: function (A, B) {
             if (A.stock > 0) {
+		if (A.restocktime > 0) {
+		return A.stock + ' (' + A.restocktime + 's)'
+		}
                 return A.stock
             } else {
                 B.style.fontFamily = "Verdana, sans-serif";

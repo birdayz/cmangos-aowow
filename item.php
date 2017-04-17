@@ -142,7 +142,7 @@ if (!$item = load_cache(5, $id)) {
 
     // Search Vender that sell this thing
     $rows_soldby = $DB->select('
-		SELECT ?#, c.entry, v.maxcount AS stock
+		SELECT ?#, c.entry, v.maxcount AS stock, incrtime AS restocktime
 		{
 			, l.name_loc?d as `name_loc`
 			, l.subname_loc' . $_SESSION['locale'] . ' as `subname_loc`
@@ -162,6 +162,8 @@ if (!$item = load_cache(5, $id)) {
             $item['soldby'][$numRow] = array();
             $item['soldby'][$numRow] = creatureinfo2($row);
             $item['soldby'][$numRow]['stock'] = ($row['stock'] == 0) ? -1 : $row['stock'];
+	    $item['soldby'][$numRow]['restocktime'] = ($row['restocktime'] == 0) ? -1 : $row['restocktime'];
+
             /* [NOTE] implement for honor cost
               if ($row['ExtendedCost'])
               {

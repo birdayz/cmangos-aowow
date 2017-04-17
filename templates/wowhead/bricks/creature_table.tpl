@@ -54,6 +54,7 @@ new Listview(
 					{/if}
 					{if $cost}
 						stock: {$data[i].stock},
+						restocktime: {$data[i].restocktime},
 						{if isset($data[i].stack)}
 							stack: {$data[i].stack},
 						{/if}
