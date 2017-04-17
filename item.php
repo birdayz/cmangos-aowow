@@ -162,7 +162,7 @@ if (!$item = load_cache(5, $id)) {
             $item['soldby'][$numRow] = array();
             $item['soldby'][$numRow] = creatureinfo2($row);
             $item['soldby'][$numRow]['stock'] = ($row['stock'] == 0) ? -1 : $row['stock'];
-	    $item['soldby'][$numRow]['restocktime'] = ($row['restocktime'] == 0) ? -1 : $row['restocktime'];
+            $item['soldby'][$numRow]['restocktime'] = ($row['restocktime'] == 0) ? -1 : $row['restocktime'];
 
             /* [NOTE] implement for honor cost
               if ($row['ExtendedCost'])
