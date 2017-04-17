@@ -433,8 +433,10 @@ if (!$item = load_cache(5, $id)) {
 				FROM ?_aowow_skill_line_ability
 				WHERE spellID=?d
 				LIMIT 1', $row['spellID']
-            );
-            $item['createdfrom'][] = spellinfo2(array_merge($row, $skillrow));
+            ); 
+	    $merged = array_merge($row, $skillrow);
+	    $spellinfo = spellinfo2($merged);
+            $item['createdfrom'][] = $spellinfo;
         }
         unset($skillrow);
     }
