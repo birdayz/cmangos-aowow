@@ -179,7 +179,7 @@ if (!$npc = load_cache(1, intval($id))) {
 
     // Продает:
     $rows_s = $DB->select('
-		SELECT ?#, i.entry, i.maxcount, n.`maxcount` as `drop-maxcount`
+		SELECT ?#, i.entry, i.maxcount, n.`maxcount` as `drop-maxcount`, n.incrtime as restocktime
 			{, l.name_loc?d AS `name_loc`}
 		FROM ?_npc_vendor n, ?_aowow_icons, ?_item_template i
 			{LEFT JOIN (?_locales_item l) ON l.entry=i.entry AND ?d}
@@ -195,6 +195,8 @@ if (!$npc = load_cache(1, intval($id))) {
             $npc['sells'][$numRow] = array();
             $npc['sells'][$numRow] = iteminfo2($row);
             $npc['sells'][$numRow]['maxcount'] = $row['drop-maxcount'];
+            $npc['sells'][$numRow]['stock'] = $row['drop-maxcount'];
+            $npc['sells'][$numRow]['restocktime'] = $row['restocktime'];
             $npc['sells'][$numRow]['cost'] = array();
             /* if ($row['ExtendedCost']) [NOTE] overwrite with honor points? 
               {
@@ -311,7 +313,6 @@ if (IsSet($allitems))
     $smarty->assign('allitems', $allitems);
 if (IsSet($allspells))
     $smarty->assign('allspells', $allspells);
-
 $smarty->assign('npc', $npc);
 
 // Количество MySQL запросов

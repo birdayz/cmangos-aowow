@@ -63,8 +63,8 @@ new Listview(
 		{/if}
 		{* Стоимость *}
 		{if $cost}
-			{* Макс. кол-во на продажу *}
-			stock: -1,
+			stock: {$data[i].stock},
+			restocktime: {$data[i].restocktime},
 			cost: [
 				{if isset($data[i].cost.money)}{$data[i].cost.money}{/if}
 				{if isset($data[i].cost.honor) or isset($data[i].cost.arena) or isset($data[i].cost.items)}
